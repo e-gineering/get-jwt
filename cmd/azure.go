@@ -2,6 +2,7 @@ package cmd
 
 import (
 	"context"
+	"os"
 
 	"github.com/AzureAD/microsoft-authentication-library-for-go/apps/public"
 	"github.com/atotto/clipboard"
@@ -23,10 +24,44 @@ to quickly create a Cobra application.`,
 		// Start a context
 		ctx := context.Background()
 
+		var clientId string
+		var tenantId string
+		var scope string
+
+		// Look up values from environment variables
+		clientIdEnv, clientIdEnvSet := os.LookupEnv("GET_JWT_AZURE_AD_CLIENT_ID")
+		tenantIdEnv, tenantIdEnvSet := os.LookupEnv("GET_JWT_AZURE_AD_TENANT_ID")
+		scopeEnv, scopeEnvSet := os.LookupEnv("GET_JWT_AZURE_AD_SCOPE")
+
 		// Read values from the flags
-		clientId, _ := cmd.Flags().GetString("client-id")
-		tenantId, _ := cmd.Flags().GetString("tenant-id")
-		scope, _ := cmd.Flags().GetString("scope")
+		clientIdFlag, _ := cmd.Flags().GetString("client-id")
+		tenantIdFlag, _ := cmd.Flags().GetString("tenant-id")
+		scopeFlag, _ := cmd.Flags().GetString("scope")
+
+		// Set the variables, giving precendence to the env var value if it's set
+		if clientIdEnvSet {
+			clientId = clientIdEnv
+		} else if cmd.Flag("client-id").Changed {
+			clientId = clientIdFlag
+		} else {
+			log.Fatal("Please set either the `--client-id` flag or the environment variable GET_JWT_AZURE_AD_CLIENT_ID.")
+		}
+
+		if tenantIdEnvSet {
+			tenantId = tenantIdEnv
+		} else if cmd.Flag("tenant-id").Changed {
+			tenantId = tenantIdFlag
+		} else {
+			log.Fatal("Please set either the `--tenant-id` flag or the environment variable GET_JWT_AZURE_AD_TENANT_ID.")
+		}
+
+		if scopeEnvSet {
+			scope = scopeEnv
+		} else if cmd.Flag("scope").Changed {
+			scope = scopeFlag
+		} else {
+			log.Fatal("Please set either the `--scope` flag or the environment variable GET_JWT_AZURE_AD_SCOPE.")
+		}
 
 		getAzureJwt(ctx, clientId, tenantId, scope)
 	},
@@ -65,6 +100,6 @@ func getAzureJwt(ctx context.Context, clientId string, tenantId string, scope st
 
 	accessToken := result.AccessToken
 
-	log.Info("Writing to clipboard 📋")
+	log.Info("Writing JWT to clipboard 📋")
 	clipboard.WriteAll(accessToken)
 }
