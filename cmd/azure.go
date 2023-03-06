@@ -52,7 +52,7 @@ func getAzureJwt(ctx context.Context, clientId string, tenantId string, scope st
 	// Initialize a public client
 	publicClientApp, err := public.New(clientId, public.WithAuthority(authority))
 	if err != nil {
-		log.Fatal(err)
+		log.Error("Failed to initialize the public client", "error", err)
 	}
 
 	log.Info("Opening browser to login...")
@@ -60,7 +60,7 @@ func getAzureJwt(ctx context.Context, clientId string, tenantId string, scope st
 	// Open browser to do the interactive login
 	result, err := publicClientApp.AcquireTokenInteractive(context.Background(), scopes)
 	if err != nil {
-		log.Fatal(err)
+		log.Error("Failed to log in successfully", "error", err)
 	}
 
 	accessToken := result.AccessToken
