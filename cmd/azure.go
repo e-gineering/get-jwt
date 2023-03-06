@@ -1,8 +1,12 @@
 package cmd
 
 import (
+	"context"
 	"fmt"
+	"log"
 
+	"github.com/AzureAD/microsoft-authentication-library-for-go/apps/public"
+	"github.com/atotto/clipboard"
 	"github.com/spf13/cobra"
 )
 
@@ -52,4 +56,23 @@ func getAzureJwt(clientId string, tenantId string, scope string) {
 	fmt.Println(tenantId)
 	fmt.Println(scope)
 
+	authority := "https://login.microsoftonline.com/" + tenantId
+
+	scopes := []string{scope}
+
+	// Initialize a public client
+	publicClientApp, err := public.New(clientId, public.WithAuthority(authority))
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	// Open browser to do the interactive login
+	result, err := publicClientApp.AcquireTokenInteractive(context.Background(), scopes)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	accessToken := result.AccessToken
+	log.Default().Println("Writing to clipboard 📋")
+	clipboard.WriteAll(accessToken)
 }
