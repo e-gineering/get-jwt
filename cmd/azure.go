@@ -1,7 +1,3 @@
-/*
-Copyright © 2023 NAME HERE <EMAIL ADDRESS>
-
-*/
 package cmd
 
 import (
@@ -22,6 +18,13 @@ This application is a tool to generate the needed files
 to quickly create a Cobra application.`,
 	Run: func(cmd *cobra.Command, args []string) {
 		fmt.Println("azure called")
+
+		clientId, _ := cmd.Flags().GetString("client-id")
+		tenantId, _ := cmd.Flags().GetString("tenant-id")
+		scope, _ := cmd.Flags().GetString("scope")
+
+		getAzureJwt(clientId, tenantId, scope)
+
 	},
 }
 
@@ -37,4 +40,16 @@ func init() {
 	// Cobra supports local flags which will only run when this command
 	// is called directly, e.g.:
 	// azureCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
+	azureCmd.Flags().String("client-id", "", "Help message for client-id")
+	azureCmd.Flags().String("tenant-id", "", "Help message for tenant-id")
+	azureCmd.Flags().String("scope", "", "Help message for scope")
+}
+
+func getAzureJwt(clientId string, tenantId string, scope string) {
+
+	fmt.Println("hi")
+	fmt.Println(clientId)
+	fmt.Println(tenantId)
+	fmt.Println(scope)
+
 }
