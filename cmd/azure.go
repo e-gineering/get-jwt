@@ -2,7 +2,9 @@ package cmd
 
 import (
 	"context"
+	"fmt"
 	"os"
+	"strconv"
 
 	"github.com/AzureAD/microsoft-authentication-library-for-go/apps/public"
 	"github.com/atotto/clipboard"
@@ -32,11 +34,14 @@ to quickly create a Cobra application.`,
 		clientIdEnv, clientIdEnvSet := os.LookupEnv("GET_JWT_AZURE_AD_CLIENT_ID")
 		tenantIdEnv, tenantIdEnvSet := os.LookupEnv("GET_JWT_AZURE_AD_TENANT_ID")
 		scopeEnv, scopeEnvSet := os.LookupEnv("GET_JWT_AZURE_AD_SCOPE")
+		copyEnv, _ := os.LookupEnv("GET_JWT_COPY")
+		copyEnvBool, _ := strconv.ParseBool(copyEnv)
 
 		// Read values from the flags
 		clientIdFlag, _ := cmd.Flags().GetString("client-id")
 		tenantIdFlag, _ := cmd.Flags().GetString("tenant-id")
 		scopeFlag, _ := cmd.Flags().GetString("scope")
+		copyFlagBool, _ := cmd.Flags().GetBool("copy")
 
 		// Set the variables, giving precendence to the env var value if it's set
 		if clientIdEnvSet {
@@ -63,7 +68,15 @@ to quickly create a Cobra application.`,
 			log.Fatal("Please set either the `--scope` flag or the environment variable GET_JWT_AZURE_AD_SCOPE.")
 		}
 
-		getAzureJwt(ctx, clientId, tenantId, scope)
+		accessToken := getAzureJwt(ctx, clientId, tenantId, scope)
+
+		if copyEnvBool || copyFlagBool {
+			log.Info("Writing JWT to clipboard 📋")
+			clipboard.WriteAll(accessToken)
+		} else {
+			log.Info("Printing JWT below 📜")
+			fmt.Println(accessToken)
+		}
 	},
 }
 
@@ -73,9 +86,10 @@ func init() {
 	azureCmd.Flags().String("client-id", "", "Help message for client-id")
 	azureCmd.Flags().String("tenant-id", "", "Help message for tenant-id")
 	azureCmd.Flags().String("scope", "", "Help message for scope")
+	azureCmd.Flags().Bool("copy", false, "Copy to clipboard")
 }
 
-func getAzureJwt(ctx context.Context, clientId string, tenantId string, scope string) {
+func getAzureJwt(ctx context.Context, clientId string, tenantId string, scope string) string {
 	log.Debug("Client ID: %s", clientId)
 	log.Debug("Tenant ID: %s", tenantId)
 	log.Debug("Scope: %s", scope)
@@ -98,8 +112,5 @@ func getAzureJwt(ctx context.Context, clientId string, tenantId string, scope st
 		log.Error("Failed to log in successfully", "error", err)
 	}
 
-	accessToken := result.AccessToken
-
-	log.Info("Writing JWT to clipboard 📋")
-	clipboard.WriteAll(accessToken)
+	return result.AccessToken
 }
