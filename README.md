@@ -18,9 +18,16 @@ If this is the first time that get-jwt is being run against an App Registration 
 
 ### Homebrew
 
+If you have Homebrew installed for MacOS or Linux, you can install from the tap with:
+
+```
+brew tap dbirks/get-jwt https://github.com/dbirks/get-jwt
+brew install get-jwt
+```
+
 ### Binary
 
-Pre-built binaries are available for MacOS, Windows, and Linux in the [Github Releases](https://github.com/dbirks/get-jwt/releases).
+Pre-built binaries are available for Windows, MacOS, and Linux in the [Github Releases](https://github.com/dbirks/get-jwt/releases).
 
 ### Go
 

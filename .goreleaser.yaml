@@ -1,0 +1,24 @@
+builds:
+  - goos:
+      - linux
+      - darwin
+      - windows
+    goarch:
+      - amd64
+      - arm64
+
+archives:
+  - format: tar.gz
+    files:
+      - none*
+
+changelog:
+  sort: asc
+
+brews:
+  - tap:
+      owner: dbirks
+      name: get-jwt
+    description: A helper utility to make it easier to get a JWT
+    homepage: https://github.com/dbirks/get-jwt
+    license: Apache2
