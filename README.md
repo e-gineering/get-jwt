@@ -9,6 +9,7 @@
   - [Running](#running)
   - [Configuration](#configuration)
   - [Azure prerequisites](#azure-prerequisites)
+  - [Releasing](#releasing)
 
 A helper utility to make it easier to get a JSON Web Token (JWT) from a given service. Currently only Azure AD is supported.
 
@@ -82,3 +83,12 @@ There is some initial setup we need to do in App Registrations if this is the fi
 2. Enable **Allow public client flows**
   - Remain on the same Authentication tab
   - Under **Advanced settings** at the bottom, toggle the slider for **Allow public client flows** to `Yes`
+
+## Releasing
+
+The Github Actions to run goreleaser are triggered by a push of a tag. Example:
+
+```
+git tag v0.2.1
+git push origin v0.2.1
+```
