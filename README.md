@@ -54,7 +54,7 @@ go install github.com/dbirks/get-jwt
 To be able to tab-complete commands, enter a line like this into your `~/.bashrc` file if you're using bash:
 
 ```
-. <(get-jwt completion bash)
+source <(get-jwt completion bash)
 ```
 
 And then source your shell's rc file with `source ~/.bashrc`, or just start a new terminal tab.
