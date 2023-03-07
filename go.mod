@@ -5,12 +5,12 @@ go 1.19
 require (
 	github.com/AzureAD/microsoft-authentication-library-for-go v0.8.1
 	github.com/atotto/clipboard v0.1.4
+	github.com/charmbracelet/log v0.1.2
 	github.com/spf13/cobra v1.6.1
 )
 
 require (
 	github.com/charmbracelet/lipgloss v0.6.0 // indirect
-	github.com/charmbracelet/log v0.1.2 // indirect
 	github.com/go-logfmt/logfmt v0.6.0 // indirect
 	github.com/golang-jwt/jwt/v4 v4.4.2 // indirect
 	github.com/google/uuid v1.1.1 // indirect
