@@ -3,8 +3,9 @@
 - [get-jwt](#get-jwt)
   - [Installing](#installing)
     - [Homebrew](#homebrew)
-    - [Go](#go)
     - [Binary](#binary)
+    - [Go](#go)
+    - [Set up command completion](#set-up-command-completion)
   - [Running](#running)
   - [Configuration](#configuration)
   - [Azure prerequisites](#azure-prerequisites)
@@ -17,9 +18,29 @@ If this is the first time that get-jwt is being run against an App Registration 
 
 ### Homebrew
 
+### Binary
+
+Pre-built binaries are available for MacOS, Windows, and Linux in the [Github Releases](https://github.com/dbirks/get-jwt/releases).
+
 ### Go
 
-### Binary
+If you have Go installed locally, you can install get-jwt with:
+
+```
+go install github.com/dbirks/get-jwt
+```
+
+### Set up command completion
+
+To be able to tab-complete commands, enter a line like this into your `~/.bashrc` file if you're using bash:
+
+```
+. <(get-jwt completion bash)
+```
+
+And then source your shell's rc file with `source ~/.bashrc`, or just start a new terminal tab.
+
+Command completion is available for the shells: `bash`, `zsh`, `powershell`, and `fish`.
 
 ## Running
 
@@ -34,12 +55,12 @@ get-jwt azure --client-id c3ba59ce-1840-4824-b0b5-539d951c3b9c --tenant-id 76dd4
 
 ## Configuration
 
-| Flag          | Environment variable         |
-| ------------- | ---------------------------- |
-| `--client-id` | `GET_JWT_AZURE_AD_CLIENT_ID` |
-| `--tenant-id` | `GET_JWT_AZURE_AD_TENANT_ID` |
-| `--scope`     | `GET_JWT_AZURE_AD_SCOPE`     |
-| `--copy`      | `GET_JWT_COPY_TO_CLIPBOARD`  |
+|     Flag      |     Environment variable     | Default value |
+| :-----------: | :--------------------------: | :-----------: |
+| `--client-id` | `GET_JWT_AZURE_AD_CLIENT_ID` |    (none)     |
+| `--tenant-id` | `GET_JWT_AZURE_AD_TENANT_ID` |    (none)     |
+|   `--scope`   |   `GET_JWT_AZURE_AD_SCOPE`   |    (none)     |
+|   `--copy`    | `GET_JWT_COPY_TO_CLIPBOARD`  |     false     |
 
 ## Azure prerequisites
 
@@ -50,7 +71,7 @@ There is some initial setup we need to do in App Registrations if this is the fi
   - Open the Authentication tab in the left sidebar
   - Click **Add a platform**
   - Choose **Mobile and desktop applications**
-  - Under **Custom redirect URIs**, enter `http://localhost` to allow Azure to redirect back to the random port opened by get-jwt locally.
+  - Under **Custom redirect URIs**, enter `http://localhost` to allow Azure to redirect back to the random port opened by get-jwt locally
 2. Enable **Allow public client flows**
   - Remain on the same Authentication tab
   - Under **Advanced settings** at the bottom, toggle the slider for **Allow public client flows** to `Yes`
