@@ -13,7 +13,7 @@
     - [Building](#building)
     - [Releasing](#releasing)
 
-A helper utility to make it easier to get a JSON Web Token (JWT) from a given service. Currently only Azure AD is supported.
+A helper utility to make it easier to get a JSON Web Token (JWT) printed to your terminal (or copied to your clipboard with the `--copy` flag). Currently only Azure AD is supported.
 
 If this is the first time that get-jwt is being run against an App Registration in Azure AD, there's a couple one-time steps to do (see [Azure prerequisites](#azure-prerequisites)).
 
