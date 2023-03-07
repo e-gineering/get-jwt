@@ -100,8 +100,20 @@ func getAzureJwt(ctx context.Context, clientId string, tenantId string, scope st
 
 	// Initialize a public client
 	publicClientApp, err := public.New(clientId, public.WithAuthority(authority))
+
+	// TODO: Handle some known errors
+	//
+	// Error:
+	//   AADSTS9002327: Tokens issued for the 'Single-Page Application' client-type may only be redeemed via cross-origin requests.
+	// Fix:
+	//   Authentication > enable Web > redirect url of http://localhost
+	//
+	// Error:
+	//   AADSTS7000218: The request body must contain the following parameter: 'client_assertion' or 'client_secret'.
+	// Fix:
+	//   Authentication > Advanced settings > Allow public client flows := true
 	if err != nil {
-		log.Error("Failed to initialize the public client", "error", err)
+		log.Fatal("Failed to log in successfully", "error", err)
 	}
 
 	log.Info("Opening browser to login...")
@@ -109,7 +121,7 @@ func getAzureJwt(ctx context.Context, clientId string, tenantId string, scope st
 	// Open browser to do the interactive login
 	result, err := publicClientApp.AcquireTokenInteractive(context.Background(), scopes)
 	if err != nil {
-		log.Error("Failed to log in successfully", "error", err)
+		log.Fatal("Failed to log in successfully", "error", err)
 	}
 
 	return result.AccessToken
