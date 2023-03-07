@@ -28,7 +28,7 @@ Three required flags are:
   - `--scope`: The scope you would like to have access to
 
 ```
-get-jwt azure --client-id 00000000-1111-2222-3333-444444444444 --tenant-id 55555555-6666-7777-8888-999999999999 --scope api://00000000-1111-2222-3333-444444444444/Read
+get-jwt azure --client-id c3ba59ce-1840-4824-b0b5-539d951c3b9c --tenant-id 76dd4f83-97f4-429d-8f93-b230bcf24989 --scope api://c3ba59ce-1840-4824-b0b5-539d951c3b9c/Read
 ```
 
 ## Configuration
