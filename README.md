@@ -32,6 +32,14 @@ brew install get-jwt
 
 Pre-built binaries are available for Windows, MacOS, and Linux in the [Github Releases](https://github.com/dbirks/get-jwt/releases).
 
+An example of installing the binary for Linux would be:
+
+```
+curl -LO https://github.com/dbirks/get-jwt/releases/download/v0.1.2/get-jwt_0.1.2_linux_amd64
+mv get-jwt_0.1.2_linux_amd64 /usr/local/bin/get-jwt
+chmod +x /usr/local/bin/get-jwt
+```
+
 ### Go
 
 If you have Go installed locally, you can install get-jwt with:
