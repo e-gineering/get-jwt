@@ -9,7 +9,9 @@
   - [Running](#running)
   - [Configuration](#configuration)
   - [Azure prerequisites](#azure-prerequisites)
-  - [Releasing](#releasing)
+  - [Contributing](#contributing)
+    - [Building](#building)
+    - [Releasing](#releasing)
 
 A helper utility to make it easier to get a JSON Web Token (JWT) from a given service. Currently only Azure AD is supported.
 
@@ -84,7 +86,23 @@ There is some initial setup we need to do in App Registrations if this is the fi
     - Remain on the same Authentication tab
     - Under **Advanced settings** at the bottom, toggle the slider for **Allow public client flows** to `Yes`
 
-## Releasing
+## Contributing
+
+### Building
+
+To build a binary locally in this folder at `./get-jwt`, run:
+
+```
+go build .
+```
+
+To test new changes without making a build artifact:
+
+```
+go run main.go <any subcommands or flags here>
+```
+
+### Releasing
 
 The Github Actions to run goreleaser are triggered by a push of a tag. Example:
 
