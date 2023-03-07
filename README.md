@@ -12,6 +12,7 @@
   - [Contributing](#contributing)
     - [Building](#building)
     - [Releasing](#releasing)
+    - [To-dos](#to-dos)
 
 A helper utility to make it easier to get a JSON Web Token (JWT) printed to your terminal (or copied to your clipboard with the `--copy` flag). Currently only Azure AD is supported.
 
@@ -118,3 +119,9 @@ The Github Actions to run goreleaser are triggered by a push of a tag. Example:
 git tag v0.2.1
 git push origin v0.2.1
 ```
+
+### To-dos
+
+- [ ] Add a `version` subcommand
+- [ ] Handle some common errors from MSAL more gracefully
+- [ ] Add a `--quiet` flag to only output the JWT, for easier use in scripts
