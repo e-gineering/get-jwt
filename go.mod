@@ -1,6 +1,6 @@
 module github.com/dbirks/get-jwt
 
-go 1.19
+go 1.20
 
 require (
 	github.com/AzureAD/microsoft-authentication-library-for-go v0.8.1
