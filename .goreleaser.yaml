@@ -12,9 +12,6 @@ archives:
     files:
       - none*
 
-changelog:
-  sort: asc
-
 brews:
   - tap:
       owner: dbirks
