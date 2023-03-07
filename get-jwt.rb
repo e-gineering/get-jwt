@@ -5,43 +5,43 @@
 class GetJwt < Formula
   desc "A helper utility to make it easier to get a JWT"
   homepage "https://github.com/dbirks/get-jwt"
-  version "0.1.1"
+  version "0.1.2"
   license "Apache2"
 
   on_macos do
-    if Hardware::CPU.intel?
-      url "https://github.com/dbirks/get-jwt/releases/download/v0.1.1/get-jwt_0.1.1_darwin_amd64.tar.gz"
-      sha256 "334202859f8f723ac4f08edd44f067435c18c368b31535cdbf1465f8af1f3a41"
+    if Hardware::CPU.arm?
+      url "https://github.com/dbirks/get-jwt/releases/download/v0.1.2/get-jwt_0.1.2_darwin_arm64"
+      sha256 "b41423e91ce7c6fd47f4274bd22d86e74f3eb66c8ef1c01b8742fc76ed1354db"
 
       def install
-        bin.install "get-jwt"
+        bin.install "get-jwt_0.1.2_darwin_arm64" => "get-jwt"
       end
     end
-    if Hardware::CPU.arm?
-      url "https://github.com/dbirks/get-jwt/releases/download/v0.1.1/get-jwt_0.1.1_darwin_arm64.tar.gz"
-      sha256 "8d6d54b93b252c94b76abb54e27d8555fcc5619bc695e6bff69076f4abbfbe2d"
+    if Hardware::CPU.intel?
+      url "https://github.com/dbirks/get-jwt/releases/download/v0.1.2/get-jwt_0.1.2_darwin_amd64"
+      sha256 "cedb476ef4a7fcc604d3cb3b6805d496ec1328b2ebfb483c0a86c025018d8a63"
 
       def install
-        bin.install "get-jwt"
+        bin.install "get-jwt_0.1.2_darwin_amd64" => "get-jwt"
       end
     end
   end
 
   on_linux do
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/dbirks/get-jwt/releases/download/v0.1.1/get-jwt_0.1.1_linux_arm64.tar.gz"
-      sha256 "1b4fc90491fb2eb1418b635735c0f7c040f6ca3ffda312548043d1a485c5528b"
+      url "https://github.com/dbirks/get-jwt/releases/download/v0.1.2/get-jwt_0.1.2_linux_arm64"
+      sha256 "e8cbf49d89edde257fc435265875ae4c0527961054260d17cb2c9c93f48c930a"
 
       def install
-        bin.install "get-jwt"
+        bin.install "get-jwt_0.1.2_linux_arm64" => "get-jwt"
       end
     end
     if Hardware::CPU.intel?
-      url "https://github.com/dbirks/get-jwt/releases/download/v0.1.1/get-jwt_0.1.1_linux_amd64.tar.gz"
-      sha256 "9ea7d62599ae210dddd6f02fb59a70168eec6f829a959f4cf30fbd5cbe421ed8"
+      url "https://github.com/dbirks/get-jwt/releases/download/v0.1.2/get-jwt_0.1.2_linux_amd64"
+      sha256 "bde489b5a348e6fdee9c5c13675187cebe98bb52489ce5ff2a70866a71b02364"
 
       def install
-        bin.install "get-jwt"
+        bin.install "get-jwt_0.1.2_linux_amd64" => "get-jwt"
       end
     end
   end
