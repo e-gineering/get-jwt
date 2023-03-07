@@ -8,9 +8,7 @@ builds:
       - arm64
 
 archives:
-  - format: tar.gz
-    files:
-      - none*
+  - format: binary
 
 brews:
   - tap:
