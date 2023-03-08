@@ -125,3 +125,4 @@ git push origin v0.2.1
 - [ ] Add a `version` subcommand
 - [ ] Handle some common errors from MSAL more gracefully
 - [ ] Add a `--quiet` flag to only output the JWT, for easier use in scripts
+- [ ] Look into Viper for handling the injesting of env vars and flags
