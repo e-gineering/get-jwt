@@ -30,3 +30,22 @@ brews:
     description: A helper utility to make it easier to get a JWT
     homepage: https://github.com/dbirks/get-jwt
     license: Apache2
+    commit_msg_template: "chore: Update Brew formula for version {{ .Tag }}"
+
+# https://goreleaser.com/customization/changelog/
+changelog:
+  groups:
+    - title: Features
+      regexp: '^.*?feat(\([[:word:]]+\))??!?:.+$'
+      order: 0
+    - title: Bug fixes
+      regexp: '^.*?fix(\([[:word:]]+\))??!?:.+$'
+      order: 1
+    - title: Build/release process
+      regexp: '^.*?ci(\([[:word:]]+\))??!?:.+$'
+      order: 2
+    - title: Documentation
+      regexp: '^.*?docs(\([[:word:]]+\))??!?:.+$'
+      order: 3
+    - title: Others
+      order: 999
