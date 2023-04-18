@@ -1,3 +1,5 @@
+# yaml-language-server: $schema=https://goreleaser.com/static/schema.json
+
 builds:
   - goos:
       - linux
@@ -6,6 +8,17 @@ builds:
     goarch:
       - amd64
       - arm64
+
+    # Part of making this a reproducible build
+    # https://goreleaser.com/customization/builds/#reproducible-builds
+    flags:
+      - -trimpath
+    mod_timestamp: ""
+
+    env:
+      # Make a static binary
+      # https://stackoverflow.com/a/64531740/7733616
+      - CGO_ENABLED=0
 
 archives:
   - format: binary
