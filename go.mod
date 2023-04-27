@@ -1,4 +1,4 @@
-module github.com/dbirks/get-jwt
+module github.com/egineering-llc/get-jwt
 
 go 1.20
 

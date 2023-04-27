@@ -25,10 +25,10 @@ archives:
 
 brews:
   - tap:
-      owner: dbirks
+      owner: egineering-llc
       name: get-jwt
     description: A helper utility to make it easier to get a JWT
-    homepage: https://github.com/dbirks/get-jwt
+    homepage: https://github.com/egineering-llc/get-jwt
     license: Apache2
     commit_msg_template: "chore: Update Brew formula for version {{ .Tag }}"
 

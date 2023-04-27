@@ -25,18 +25,18 @@ If this is the first time that get-jwt is being run against an App Registration 
 If you have Homebrew installed for MacOS or Linux, you can install from the tap with:
 
 ```
-brew tap dbirks/get-jwt https://github.com/dbirks/get-jwt
+brew tap egineering-llc/get-jwt https://github.com/egineering-llc/get-jwt
 brew install get-jwt
 ```
 
 ### Binary
 
-Pre-built binaries are available for Windows, MacOS, and Linux in the [Github Releases](https://github.com/dbirks/get-jwt/releases).
+Pre-built binaries are available for Windows, MacOS, and Linux in the [Github Releases](https://github.com/egineering-llc/get-jwt/releases).
 
 An example of installing the binary for Linux would be:
 
 ```
-curl -LO https://github.com/dbirks/get-jwt/releases/download/v0.1.2/get-jwt_0.1.2_linux_amd64
+curl -LO https://github.com/egineering-llc/get-jwt/releases/download/v0.1.2/get-jwt_0.1.2_linux_amd64
 mv get-jwt_0.1.2_linux_amd64 /usr/local/bin/get-jwt
 chmod +x /usr/local/bin/get-jwt
 ```
@@ -46,7 +46,7 @@ chmod +x /usr/local/bin/get-jwt
 If you have Go installed locally, you can install get-jwt with:
 
 ```
-go install github.com/dbirks/get-jwt
+go install github.com/egineering-llc/get-jwt
 ```
 
 ### Set up command completion
