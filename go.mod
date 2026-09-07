@@ -5,7 +5,7 @@ go 1.20
 require (
 	github.com/AzureAD/microsoft-authentication-library-for-go v1.0.0
 	github.com/atotto/clipboard v0.1.4
-	github.com/charmbracelet/log v0.2.1
+	github.com/charmbracelet/log/v2 v2.0.1
 	github.com/spf13/cobra v1.7.0
 )
 
